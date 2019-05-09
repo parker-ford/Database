@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 public class JDBC {
     //TEST
+    //TEST 2
     private String userID;
     private String password;
 
