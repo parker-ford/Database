@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -15,6 +16,8 @@ public class loginController {
     public Button submitButton;
     @FXML
     public TextField studentIDText;
+    @FXML
+    public Label nameDisplay;
 
     private String userID;
     private String password;
@@ -55,6 +58,10 @@ public class loginController {
     public void handleSubmit(ActionEvent event) throws IOException, ParserConfigurationException {
         String studentID = studentIDText.getText();
         System.out.println(studentID);
+
+    }
+
+    public void updateLabel(){
 
     }
 }
