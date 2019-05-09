@@ -49,6 +49,7 @@ public class studentInterfaceController {
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         semesterColumn.setCellValueFactory(new PropertyValueFactory<>("semester"));
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+        currentCourseTable.setItems(currentCourses);
     }
 
     public void queryStudentInfo(Connection connection){
