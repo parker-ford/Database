@@ -8,10 +8,10 @@ public class Course {
     private String dept_name;
     private int credits;
     private String time_slot_id;
+    private String grade;
 
 
-
-    public Course(String course_id, String sec_id, String semester, String year, String title, String dept_name, String credits, String time_slot_id){
+    public Course(String course_id, String sec_id, String semester, String year, String title, String dept_name, String credits, String time_slot_id, String grade){
         this.course_id = course_id;
         this.sec_id = sec_id;
         this.semester = semester;
@@ -20,6 +20,7 @@ public class Course {
         this.dept_name = dept_name;
         this.credits = Integer.parseInt(credits);
         this.time_slot_id = time_slot_id;
+        this.grade = grade;
 
         System.out.println("course created");
     }
@@ -53,5 +54,8 @@ public class Course {
 
     public String getTime_slot_id() {
         return time_slot_id;
+    }
+    public String getGrade() {
+        return this.grade;
     }
 }

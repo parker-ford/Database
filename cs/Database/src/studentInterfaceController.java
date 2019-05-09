@@ -37,6 +37,7 @@ public class studentInterfaceController {
     @FXML TableColumn<Course, String> titleColumn = new TableColumn<>("Title");
     @FXML TableColumn<Course, String> semesterColumn = new TableColumn<>("Semester");
     @FXML TableColumn<Course, String> yearColumn = new TableColumn<>("Year");
+    @FXML TableColumn<Course, String> gradeColumn = new TableColumn<>("Grade");
 
 
     public void initData(String studentID, Connection connection){
@@ -49,6 +50,7 @@ public class studentInterfaceController {
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
         semesterColumn.setCellValueFactory(new PropertyValueFactory<>("semester"));
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
+        gradeColumn.setCellValueFactory(new PropertyValueFactory<>("grade"));
         currentCourseTable.setItems(currentCourses);
     }
 
@@ -66,7 +68,7 @@ public class studentInterfaceController {
             System.out.println(rsmd.getColumnName(6) + " = column name");
 
             while(result2.next()){
-                Course course = new Course(result2.getString("course_id"),result2.getString("sec_id"),result2.getString("semester"),result2.getString("year"),result2.getString("title"),result2.getString("dept_name"),result2.getString("credits"),result2.getString("time_slot_id"));
+                Course course = new Course(result2.getString("course_id"),result2.getString("sec_id"),result2.getString("semester"),result2.getString("year"),result2.getString("title"),result2.getString("dept_name"),result2.getString("credits"),result2.getString("time_slot_id"),result2.getString("grade"));
                 currentCourses.add(course);
             }
 
