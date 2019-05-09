@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="557.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="studentInterfaceController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label fx:id="nameLabel" text="Welcome" />
+            <Label fx:id="idLabel" text="ID:" />
+            <Label fx:id="deptLabel" text="Department:" />
+            <Label fx:id="credLabel" text="Total Credits: " />
+         </children>
+      </VBox>
+      <HBox layoutX="14.0" layoutY="457.0" prefHeight="100.0" prefWidth="675.0">
+         <children>
+            <Button fx:id="transcriptButton" mnemonicParsing="false" text="Get Transcipt" />
+            <Button fx:id="degreeButton" mnemonicParsing="false" text="Check Degree Requirements" />
+            <Button fx:id="addCourseButton" mnemonicParsing="false" text="Add Course" />
+            <Button fx:id="removeCourseButton" mnemonicParsing="false" text="Remove Course" />
+            <Button fx:id="exitButton" mnemonicParsing="false" text="Exit" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

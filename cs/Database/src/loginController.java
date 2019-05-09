@@ -1,8 +1,13 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -61,14 +66,28 @@ public class loginController {
     public void handleSubmit(ActionEvent event) throws IOException, ParserConfigurationException {
         this.studentID = studentIDText.getText();
         System.out.println(studentID);
-        queryName(connection);
+        //String studentName = queryName(connection);
+
+        FXMLLoader loader= new FXMLLoader();
+        loader.setLocation(getClass().getResource("studentInterface.fxml"));
+
+        Parent studentInterfaceParent = loader.load();
+        Scene studentInterfaceScene = new Scene(studentInterfaceParent);
+
+        studentInterfaceController controller = loader.getController();
+        controller.initData(studentID);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(studentInterfaceScene);
+        window.show();
+
     }
 
     public void updateLabel(String name){
         nameDisplay.setText(name);
     }
 
-    public void queryName(Connection connection){
+    public String queryName(Connection connection){
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT name FROM student WHERE ID = " + studentID);
 
@@ -78,6 +97,7 @@ public class loginController {
                 System.out.println(result.getString("name"));
                 String studentName = result.getString("name");
                 updateLabel(studentName);
+                return studentName;
             }
 
 
@@ -85,6 +105,6 @@ public class loginController {
         catch (Exception e){
             e.printStackTrace();
         }
-
+        return null;
     }
 }
