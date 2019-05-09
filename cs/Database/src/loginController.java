@@ -75,7 +75,7 @@ public class loginController {
         Scene studentInterfaceScene = new Scene(studentInterfaceParent);
 
         studentInterfaceController controller = loader.getController();
-        controller.initData(studentID);
+        controller.initData(studentID, connection);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(studentInterfaceScene);
