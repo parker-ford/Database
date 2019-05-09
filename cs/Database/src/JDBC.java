@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JDBC {
+    //TEST
     private String userID;
     private String password;
 
