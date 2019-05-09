@@ -6,9 +6,7 @@ import javafx.scene.control.TextField;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class loginController {
 
@@ -21,6 +19,8 @@ public class loginController {
 
     private String userID;
     private String password;
+    private String studentID;
+    private Connection connection;
 
     private final String preConnectionString = "jdbc:mysql://mysql.cs.wwu.edu:3306/";
     private final String postConnectionString = "?useSSL=false";
@@ -37,8 +37,11 @@ public class loginController {
         this.password = loginInfo[1];
 
         try {
-            Connection connection = getConnection();
+            this.connection = getConnection();
             System.out.println("successful connection");
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -56,12 +59,32 @@ public class loginController {
 
 
     public void handleSubmit(ActionEvent event) throws IOException, ParserConfigurationException {
-        String studentID = studentIDText.getText();
+        this.studentID = studentIDText.getText();
         System.out.println(studentID);
-
+        queryName(connection);
     }
 
-    public void updateLabel(){
+    public void updateLabel(String name){
+        nameDisplay.setText(name);
+    }
+
+    public void queryName(Connection connection){
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT name FROM student WHERE ID = " + studentID);
+
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()){
+                System.out.println(result.getString("name"));
+                String studentName = result.getString("name");
+                updateLabel(studentName);
+            }
+
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 }
