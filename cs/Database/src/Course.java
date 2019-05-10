@@ -9,9 +9,11 @@ public class Course {
     private int credits;
     private String time_slot_id;
     private String grade;
+    private String building;
+    private String room_number;
 
 
-    public Course(String course_id, String sec_id, String semester, String year, String title, String dept_name, String credits, String time_slot_id, String grade){
+    public Course(String course_id, String sec_id, String semester, String year, String title, String dept_name, String credits, String time_slot_id, String grade) {
         this.course_id = course_id;
         this.sec_id = sec_id;
         this.semester = semester;
@@ -25,43 +27,15 @@ public class Course {
         System.out.println("course created");
     }
 
-    public Course(String course_id, String title){
+    public Course(String course_id, String title) {
         this.course_id = course_id;
         this.title = title;
     }
 
-    public String getCourse_id() {
-        return course_id;
-    }
-
-    public String getSec_id() {
-        return sec_id;
-    }
-
-    public String getSemester() {
-        return semester;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDept_name() {
-        return dept_name;
-    }
-
-    public int getCredits() {
-        return credits;
-    }
-
-    public String getTime_slot_id() {
-        return time_slot_id;
-    }
-    public String getGrade() {
-        return this.grade;
+    public Course(String course_id, String title, String building, String room_number) {
+        this.course_id = course_id;
+        this.title = title;
+        this.building = building;
+        this.room_number = room_number;
     }
 }

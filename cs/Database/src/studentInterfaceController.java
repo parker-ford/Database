@@ -1,10 +1,7 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.awt.event.ActionEvent;
@@ -23,6 +20,7 @@ public class studentInterfaceController {
     private Connection connection;
     private ObservableList<Course> currentCourses = FXCollections.observableArrayList();
     private ObservableList<Course> missingCourses = FXCollections.observableArrayList();
+    private ObservableList<Course> coursesAdd = FXCollections.observableArrayList();
 
 
     @FXML Button transcriptButton;
@@ -45,6 +43,10 @@ public class studentInterfaceController {
     @FXML TableView missingCourseTable;
     @FXML TableColumn<Course, String> missingID = new TableColumn<>("Course ID");
     @FXML TableColumn<Course, String> missingTitle = new TableColumn<>("Title");
+
+    @FXML RadioButton radioSecOne;
+    @FXML RadioButton radioSecTwo;
+    @FXML ChoiceBox addCourseChoice;
 
 
     public void initData(String studentID, Connection connection){
@@ -116,6 +118,24 @@ public class studentInterfaceController {
         }
     }
 
+    public void queryAddCourse(Connection connection, String section){
+        coursesAdd.clear();
+        addCourseChoice.getItems().clear();
+        try {
+            PreparedStatement statement = connection.prepareStatement("select * from section left outer join (select * from takes where id = '" + studentID + "') as A on section.course_id = a.course_id where grade IS NULL AND section.sec_id = '" + section + "'");
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()){
+                Course course = new Course(result.getString("course_id"), result.getString("title"), result.getString("building"), result.getString("room_number"));
+                coursesAdd.add(course);
+            }
+            addCourseChoice.getItems().addAll(coursesAdd);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     private void updateLabel(){
         nameLabel.setText("Welcome " + studentName);
         idLabel.setText("Student ID " + studentID);
@@ -136,6 +156,10 @@ public class studentInterfaceController {
     public void resetView(){
         currentCourseTable.setVisible(false);
         missingCourseTable.setVisible(false);
+    }
+
+    public void handleAdd(){
+
     }
 
 
