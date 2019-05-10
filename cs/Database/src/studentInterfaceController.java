@@ -152,11 +152,13 @@ public class studentInterfaceController {
 
     public void handleTranscript(){
         resetView();
+        currentCourseTable.refresh();
         currentCourseTable.setVisible(true);
     }
 
     public void handleDegree(){
         resetView();
+        missingCourseTable.refresh();
         missingCourseTable.setVisible(true);
     }
 
