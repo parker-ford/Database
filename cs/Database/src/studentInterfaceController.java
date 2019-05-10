@@ -7,6 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -95,9 +96,8 @@ public class studentInterfaceController {
         deptLabel.setText("Department: " + studentDept);
     }
 
-    public ObservableList<Course> getCurrentClasses(){
-
-        return null;
-
+    public void handleTranscript(ActionEvent event){
+        currentCourseTable.setVisible(true);
     }
+
 }
