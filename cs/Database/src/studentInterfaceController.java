@@ -52,6 +52,7 @@ public class studentInterfaceController {
         this.connection = connection;
 
         queryStudentInfo(connection);
+        queryMissingCourse(connection);
 
         courseIDColumn.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -103,7 +104,8 @@ public class studentInterfaceController {
             ResultSet result = statement.executeQuery();
 
             while(result.next()){
-                Course course = new Course(result.getString("course_id"),result.getString("title)"));
+                System.out.println("MISSING COURSE FOUND");
+                Course course = new Course(result.getString("course_id"),result.getString("title"));
                 missingCourses.add(course);
             }
 
@@ -114,7 +116,6 @@ public class studentInterfaceController {
         }
     }
 
-
     private void updateLabel(){
         nameLabel.setText("Welcome " + studentName);
         idLabel.setText("Student ID " + studentID);
@@ -123,13 +124,13 @@ public class studentInterfaceController {
     }
 
     public void handleTranscript(){
+        resetView();
         currentCourseTable.setVisible(true);
     }
 
     public void handleDegree(){
         resetView();
-        queryMissingCourse(connection);
-        currentCourseTable.setVisible(true);
+        missingCourseTable.setVisible(true);
     }
 
     public void resetView(){
