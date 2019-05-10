@@ -38,4 +38,5 @@ public class Course {
         this.building = building;
         this.room_number = room_number;
     }
+
 }
