@@ -52,6 +52,7 @@ public class studentInterfaceController {
     @FXML TableView addCourseTable;
     @FXML TableColumn<Course, String> addCourseID = new TableColumn<>("Course ID");
     @FXML TableColumn<Course, String> addCourseTitle = new TableColumn<>("Title");
+    @FXML Button addSelectedClassButton;
 
 
     public void initData(String studentID, Connection connection){
@@ -177,6 +178,10 @@ public class studentInterfaceController {
         radioSecTwo.setOnAction(e -> {
             queryAddCourse(connection, "2");
         });
+    }
+
+    public void handleAddSelected(){
+
     }
 
 
