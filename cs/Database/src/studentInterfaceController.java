@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.Arrays;
 import java.util.Observable;
 
 public class studentInterfaceController {
@@ -91,6 +92,7 @@ public class studentInterfaceController {
                 Course course = new Course(result2.getString("course_id"),result2.getString("sec_id"),result2.getString("semester"),result2.getString("year"),result2.getString("title"),result2.getString("dept_name"),result2.getString("credits"),result2.getString("time_slot_id"),result2.getString("grade"));
                 currentCourses.add(course);
             }
+            System.out.println(Arrays.toString(currentCourses.toArray()));
 
             while(result.next()){
                 System.out.println(result.getString("name"));
@@ -127,7 +129,6 @@ public class studentInterfaceController {
 
     public void queryAddCourse(Connection connection, String section){
         coursesAdd.clear();
-        //addCourseChoice.getItems().clear();
         try {
             PreparedStatement statement = connection.prepareStatement("select *  from section as A left outer join (select * from takes where id = '" + studentID + "') as B on A.course_id = B.course_id, course as C where grade IS NULL AND A.sec_id = '" + section + "'AND A.course_id = C.course_id");
             ResultSet result = statement.executeQuery();
@@ -152,7 +153,6 @@ public class studentInterfaceController {
 
     public void handleTranscript(){
         resetView();
-        currentCourseTable.refresh();
         currentCourseTable.setVisible(true);
     }
 

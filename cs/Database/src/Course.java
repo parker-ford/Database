@@ -9,6 +9,8 @@ public class Course {
     private int credits;
     private String time_slot_id;
     private String grade;
+
+
     private String building;
     private String room_number;
 
@@ -37,6 +39,49 @@ public class Course {
         this.title = title;
         this.building = building;
         this.room_number = room_number;
+    }
+    public String getCourse_id() {
+        return course_id;
+    }
+
+    public String getSec_id() {
+        return sec_id;
+    }
+
+    public String getSemester() {
+        return semester;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDept_name() {
+        return dept_name;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public String getTime_slot_id() {
+        return time_slot_id;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public String getBuilding() {
+        return building;
+    }
+
+    public String getRoom_number() {
+        return room_number;
     }
 
 }
