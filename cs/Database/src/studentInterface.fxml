@@ -40,21 +40,20 @@
           <TableColumn fx:id="missingTitle" prefWidth="269.0" text="Title" />
         </columns>
       </TableView>
-      <HBox fx:id="addHBox" layoutX="36.0" layoutY="200.0" prefHeight="100.0" prefWidth="660.0" visible="false">
+      <HBox fx:id="addHBox" layoutX="50.0" layoutY="142.0" prefHeight="244.0" prefWidth="660.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="166.0">
                <children>
                   <RadioButton fx:id="radioSecOne" mnemonicParsing="false" text="1" />
                   <RadioButton fx:id="radioSecTwo" mnemonicParsing="false" text="2" />
-                  <Button mnemonicParsing="false" text="Button" />
                </children>
             </HBox>
-            <VBox prefHeight="100.0" prefWidth="313.0">
-               <children>
-                  <ChoiceBox prefWidth="150.0" />
-                  <Button mnemonicParsing="false" text="Button" />
-               </children>
-            </VBox>
+            <TableView fx:id="addCourseTable" prefHeight="244.0" prefWidth="405.0">
+              <columns>
+                <TableColumn fx:id="addCourseID" prefWidth="109.0" text="Course ID" />
+                <TableColumn fx:id="addCourseTitle" prefWidth="103.0" text="Title" />
+              </columns>
+            </TableView>
          </children>
       </HBox>
    </children>
