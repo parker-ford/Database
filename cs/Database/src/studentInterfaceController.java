@@ -48,7 +48,9 @@ public class studentInterfaceController {
     @FXML HBox addHBox;
     @FXML RadioButton radioSecOne;
     @FXML RadioButton radioSecTwo;
-    @FXML ChoiceBox addCourseChoice;
+    @FXML TableView addCourseTable;
+    @FXML TableColumn<Course, String> addCourseID = new TableColumn<>("Course ID");
+    @FXML TableColumn<Course, String> addCourseTitle = new TableColumn<>("Title");
 
 
     public void initData(String studentID, Connection connection){
@@ -67,6 +69,9 @@ public class studentInterfaceController {
 
         missingID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         missingTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+
+        addCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
+        addCourseTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
     }
 
     public void queryStudentInfo(Connection connection){
@@ -131,7 +136,7 @@ public class studentInterfaceController {
                 Course course = new Course(result.getString("course_id"), result.getString("title"), result.getString("building"), result.getString("room_number"));
                 coursesAdd.add(course);
             }
-            addCourseChoice.getItems().addAll(coursesAdd);
+            addCourseTable.setItems(coursesAdd);
         }
         catch (Exception e){
             e.printStackTrace();
@@ -158,7 +163,7 @@ public class studentInterfaceController {
     public void resetView(){
         currentCourseTable.setVisible(false);
         missingCourseTable.setVisible(false);
-        addHBox.setVisible(false);
+        addCourseTable.setVisible(false);
     }
 
     public void handleAdd(){
