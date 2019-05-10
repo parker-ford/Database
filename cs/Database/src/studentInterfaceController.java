@@ -3,6 +3,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
@@ -44,6 +45,7 @@ public class studentInterfaceController {
     @FXML TableColumn<Course, String> missingID = new TableColumn<>("Course ID");
     @FXML TableColumn<Course, String> missingTitle = new TableColumn<>("Title");
 
+    @FXML HBox addHBox;
     @FXML RadioButton radioSecOne;
     @FXML RadioButton radioSecTwo;
     @FXML ChoiceBox addCourseChoice;
@@ -156,10 +158,18 @@ public class studentInterfaceController {
     public void resetView(){
         currentCourseTable.setVisible(false);
         missingCourseTable.setVisible(false);
+        addHBox.setVisible(false);
     }
 
     public void handleAdd(){
-
+        resetView();
+        addHBox.setVisible(true);
+        radioSecOne.setOnAction(e -> {
+            queryAddCourse(connection, "1");
+        });
+        radioSecTwo.setOnAction(e -> {
+            queryAddCourse(connection, "2");
+        });
     }
 
 

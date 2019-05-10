@@ -20,7 +20,7 @@
          <children>
             <Button fx:id="transcriptButton" mnemonicParsing="false" onAction="#handleTranscript" text="Get Transcipt" />
             <Button fx:id="degreeButton" mnemonicParsing="false" onAction="#handleDegree" text="Check Degree Requirements" />
-            <Button fx:id="addCourseButton" mnemonicParsing="false" text="Add Course" />
+            <Button fx:id="addCourseButton" mnemonicParsing="false" onAction="#handleAdd" text="Add Course" />
             <Button fx:id="removeCourseButton" mnemonicParsing="false" text="Remove Course" />
             <Button fx:id="exitButton" mnemonicParsing="false" text="Exit" />
          </children>
@@ -40,5 +40,22 @@
           <TableColumn fx:id="missingTitle" prefWidth="269.0" text="Title" />
         </columns>
       </TableView>
+      <HBox fx:id="addHBox" layoutX="36.0" layoutY="200.0" prefHeight="100.0" prefWidth="660.0" visible="false">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="166.0">
+               <children>
+                  <RadioButton fx:id="radioSecOne" mnemonicParsing="false" text="1" />
+                  <RadioButton fx:id="radioSecTwo" mnemonicParsing="false" text="2" />
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </HBox>
+            <VBox prefHeight="100.0" prefWidth="313.0">
+               <children>
+                  <ChoiceBox prefWidth="150.0" />
+                  <Button mnemonicParsing="false" text="Button" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
