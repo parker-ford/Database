@@ -43,6 +43,8 @@ public class studentInterfaceController {
     @FXML TableColumn<Course, String> gradeColumn = new TableColumn<>("Grade");
 
     @FXML TableView missingCourseTable;
+    @FXML TableColumn<Course, String> missingID = new TableColumn<>("Course ID");
+    @FXML TableColumn<Course, String> missingTitle = new TableColumn<>("Title");
 
 
     public void initData(String studentID, Connection connection){
@@ -57,6 +59,9 @@ public class studentInterfaceController {
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         gradeColumn.setCellValueFactory(new PropertyValueFactory<>("grade"));
         currentCourseTable.setItems(currentCourses);
+
+        missingID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
+        missingTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
     }
 
     public void queryStudentInfo(Connection connection){
