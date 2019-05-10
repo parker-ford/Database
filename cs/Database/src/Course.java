@@ -24,6 +24,12 @@ public class Course {
 
         System.out.println("course created");
     }
+
+    public Course(String course_id, String title){
+        this.course_id = course_id;
+        this.title = title;
+    }
+
     public String getCourse_id() {
         return course_id;
     }

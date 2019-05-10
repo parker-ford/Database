@@ -22,6 +22,7 @@ public class studentInterfaceController {
     private String studentCred;
     private Connection connection;
     private ObservableList<Course> currentCourses = FXCollections.observableArrayList();
+    private ObservableList<Course> missingCourses = FXCollections.observableArrayList();
 
 
     @FXML Button transcriptButton;
@@ -33,12 +34,15 @@ public class studentInterfaceController {
     @FXML Label idLabel;
     @FXML Label deptLabel;
     @FXML Label credLabel;
+
     @FXML TableView currentCourseTable;
     @FXML TableColumn<Course, String> courseIDColumn = new TableColumn<>("Course ID");
     @FXML TableColumn<Course, String> titleColumn = new TableColumn<>("Title");
     @FXML TableColumn<Course, String> semesterColumn = new TableColumn<>("Semester");
     @FXML TableColumn<Course, String> yearColumn = new TableColumn<>("Year");
     @FXML TableColumn<Course, String> gradeColumn = new TableColumn<>("Grade");
+
+    @FXML TableView missingCourseTable;
 
 
     public void initData(String studentID, Connection connection){
@@ -88,6 +92,23 @@ public class studentInterfaceController {
         }
     }
 
+    public void queryMissingCourse(Connection connection){
+        try {
+            PreparedStatement statement = connection.prepareStatement("select * from course left outer join (select * from takes where id = '" + studentID + "') as A on course.course_id = a.course_id where course.dept_name = '" + studentDept + "' AND grade IS NULL");
+            ResultSet result = statement.executeQuery();
+
+            while(result.next()){
+                Course course = new Course(result.getString("course_id"),result.getString("title)"));
+                missingCourses.add(course);
+            }
+
+            missingCourseTable.setItems(missingCourses);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     private void updateLabel(){
         nameLabel.setText("Welcome " + studentName);
@@ -96,8 +117,20 @@ public class studentInterfaceController {
         deptLabel.setText("Department: " + studentDept);
     }
 
-    public void handleTranscript(ActionEvent event){
+    public void handleTranscript(){
         currentCourseTable.setVisible(true);
     }
+
+    public void handleDegree(){
+        resetView();
+        queryMissingCourse(connection);
+        currentCourseTable.setVisible(true);
+    }
+
+    public void resetView(){
+        currentCourseTable.setVisible(false);
+        missingCourseTable.setVisible(false);
+    }
+
 
 }
