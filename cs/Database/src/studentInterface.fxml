@@ -40,7 +40,7 @@
           <TableColumn fx:id="missingTitle" prefWidth="269.0" text="Title" />
         </columns>
       </TableView>
-      <HBox fx:id="addHBox" layoutX="50.0" layoutY="142.0" prefHeight="244.0" prefWidth="660.0">
+      <HBox fx:id="addHBox" layoutX="50.0" layoutY="142.0" prefHeight="244.0" prefWidth="660.0" visible="false">
          <children>
             <HBox prefHeight="100.0" prefWidth="166.0">
                <children>

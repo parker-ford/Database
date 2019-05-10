@@ -163,7 +163,7 @@ public class studentInterfaceController {
     public void resetView(){
         currentCourseTable.setVisible(false);
         missingCourseTable.setVisible(false);
-        addCourseTable.setVisible(false);
+        addHBox.setVisible(false);
     }
 
     public void handleAdd(){
