@@ -122,7 +122,7 @@ public class studentInterfaceController {
 
     public void queryAddCourse(Connection connection, String section){
         coursesAdd.clear();
-        addCourseChoice.getItems().clear();
+        //addCourseChoice.getItems().clear();
         try {
             PreparedStatement statement = connection.prepareStatement("select * from section left outer join (select * from takes where id = '" + studentID + "') as A on section.course_id = a.course_id where grade IS NULL AND section.sec_id = '" + section + "'");
             ResultSet result = statement.executeQuery();
