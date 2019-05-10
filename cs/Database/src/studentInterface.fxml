@@ -44,8 +44,12 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="166.0">
                <children>
-                  <RadioButton fx:id="radioSecOne" mnemonicParsing="false" text="1" />
-                  <RadioButton fx:id="radioSecTwo" mnemonicParsing="false" text="2" />
+                  <RadioButton fx:id="radioSecOne" mnemonicParsing="false" text="1">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Semester" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioSecTwo" mnemonicParsing="false" text="2" toggleGroup="$Semester" />
                </children>
             </HBox>
             <TableView fx:id="addCourseTable" prefHeight="244.0" prefWidth="405.0">
