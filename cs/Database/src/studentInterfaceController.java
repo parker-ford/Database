@@ -60,6 +60,14 @@ public class studentInterfaceController {
     @FXML ToggleGroup addYear;
     @FXML ToggleGroup addSemester;
 
+    @FXML HBox removeHBox;
+    @FXML TableView removeCourseTable;
+    @FXML TableColumn<Course, String> removeCourseID = new TableColumn<>("Course ID");
+    @FXML TableColumn<Course, String> removeCourseTitle = new TableColumn<>("Course ID");
+    @FXML TableColumn<Course, String> removeCourseSemester = new TableColumn<>("Course ID");
+    @FXML TableColumn<Course, String> removeCourseYear = new TableColumn<>("Course ID");
+    @FXML Button removeSelectedButton;
+
 
     public void initData(String studentID, Connection connection){
         this.studentID = studentID;
@@ -80,6 +88,11 @@ public class studentInterfaceController {
 
         addCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
         addCourseTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+
+        removeCourseID.setCellValueFactory(new PropertyValueFactory<>("course_id"));
+        removeCourseTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        removeCourseSemester.setCellValueFactory(new PropertyValueFactory<>("semester"));
+        removeCourseYear.setCellValueFactory(new PropertyValueFactory<>("year"));
     }
 
     public void queryStudentInfo(Connection connection){
@@ -174,6 +187,7 @@ public class studentInterfaceController {
         currentCourseTable.setVisible(false);
         missingCourseTable.setVisible(false);
         addHBox.setVisible(false);
+        removeHBox.setVisible(false);
     }
 
     public void handleAdd(){
@@ -213,6 +227,29 @@ public class studentInterfaceController {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void handleRemove(){
+        resetView();
+        removeHBox.setVisible(true);
+        removeCourseTable.setItems(currentCourses);
+        removeCourseTable.refresh();
+
+        removeSelectedButton.setOnAction(e -> {
+            try {
+                Course courseRemoved = (Course) removeCourseTable.getSelectionModel().getSelectedItem();
+
+                PreparedStatement statement = connection.prepareStatement("delete from takes where id = '" + studentID + "' and course_id = '" + courseRemoved.getCourse_id() + "' and sec_id = '" + courseRemoved.getSec_id() + "' and semester = '" + courseRemoved.getSemester() + "' and year= '" + courseRemoved.getYear() + "'");
+                statement.executeUpdate();
+                System.out.println("course deleted");
+
+                queryStudentInfo(connection);
+                handleTranscript();
+            }
+            catch (Exception z){
+                z.printStackTrace();
+            }
+        });
     }
 
 

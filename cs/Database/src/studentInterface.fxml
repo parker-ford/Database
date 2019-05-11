@@ -21,7 +21,7 @@
             <Button fx:id="transcriptButton" mnemonicParsing="false" onAction="#handleTranscript" text="Get Transcipt" />
             <Button fx:id="degreeButton" mnemonicParsing="false" onAction="#handleDegree" text="Check Degree Requirements" />
             <Button fx:id="addCourseButton" mnemonicParsing="false" onAction="#handleAdd" text="Add Course" />
-            <Button fx:id="removeCourseButton" mnemonicParsing="false" text="Remove Course" />
+            <Button fx:id="removeCourseButton" mnemonicParsing="false" onAction="#handleRemove" text="Remove Course" />
             <Button fx:id="exitButton" mnemonicParsing="false" text="Exit" />
          </children>
       </HBox>
@@ -40,7 +40,7 @@
           <TableColumn fx:id="missingTitle" prefWidth="269.0" text="Title" />
         </columns>
       </TableView>
-      <HBox fx:id="addHBox" layoutX="50.0" layoutY="142.0" prefHeight="244.0" prefWidth="660.0">
+      <HBox fx:id="addHBox" layoutX="50.0" layoutY="142.0" prefHeight="244.0" prefWidth="660.0" visible="false">
          <children>
             <VBox prefHeight="244.0" prefWidth="294.0">
                <children>
@@ -73,6 +73,19 @@
               <columns>
                 <TableColumn fx:id="addCourseID" prefWidth="109.0" text="Course ID" />
                 <TableColumn fx:id="addCourseTitle" prefWidth="224.0" text="Title" />
+              </columns>
+            </TableView>
+         </children>
+      </HBox>
+      <HBox fx:id="removeHBox" layoutX="72.0" layoutY="125.0" prefHeight="259.0" prefWidth="684.0" visible="false">
+         <children>
+            <Button fx:id="removeSelectedButton" mnemonicParsing="false" text="Remove Selected Course" />
+            <TableView fx:id="removeCourseTable" prefHeight="259.0" prefWidth="440.0">
+              <columns>
+                <TableColumn fx:id="removeCourseID" prefWidth="98.0" text="Course ID" />
+                <TableColumn fx:id="removeCourseTitle" minWidth="0.0" prefWidth="121.0" text="Title" />
+                  <TableColumn fx:id="removeCourseSemester" prefWidth="75.0" text="Semester" />
+                  <TableColumn fx:id="removeCourseYear" prefWidth="105.0" text="Year" />
               </columns>
             </TableView>
          </children>
