@@ -95,6 +95,7 @@ public class studentInterfaceController {
 
             System.out.println(rsmd.getColumnName(6) + " = column name");
 
+            currentCourses.clear();
             while(result2.next()){
                 Course course = new Course(result2.getString("course_id"),result2.getString("sec_id"),result2.getString("semester"),result2.getString("year"),result2.getString("title"),result2.getString("dept_name"),result2.getString("credits"),result2.getString("time_slot_id"),result2.getString("grade"));
                 currentCourses.add(course);
@@ -134,14 +135,14 @@ public class studentInterfaceController {
         }
     }
 
-    public void queryAddCourse(Connection connection, String section){
+    public void queryAddCourse(Connection connection, String year, String semester){
         coursesAdd.clear();
         try {
-            PreparedStatement statement = connection.prepareStatement("select *  from section as A left outer join (select * from takes where id = '" + studentID + "') as B on A.course_id = B.course_id, course as C where grade IS NULL AND A.sec_id = '" + section + "'AND A.course_id = C.course_id");
+            PreparedStatement statement = connection.prepareStatement("select *  from section as A left outer join (select * from takes where id = '" + studentID + "') as B on A.course_id = B.course_id, course as C where grade IS NULL AND A.course_id = C.course_id AND A.year = '" + year + "' AND A.semester = '" + semester + "';");
             ResultSet result = statement.executeQuery();
 
             while(result.next()){
-                Course course = new Course(result.getString("course_id"), result.getString("title"), result.getString("building"), result.getString("room_number"));
+                Course course = new Course(result.getString("course_id"), result.getString("title"), result.getString("building"), result.getString("room_number"), result.getString("sec_id"), result.getString("year"), result.getString("semester"));
                 coursesAdd.add(course);
             }
             addCourseTable.setItems(coursesAdd);
@@ -184,11 +185,11 @@ public class studentInterfaceController {
             String year;
             String semester;
             RadioButton getYear = (RadioButton) addYear.getSelectedToggle();
-            year = getYear.toString();
+            year = getYear.getText();
             RadioButton getSemester = (RadioButton) addSemester.getSelectedToggle();
             semester = getSemester.getText();
 
-            System.out.println(year + " " + semester);
+            queryAddCourse(connection, year, semester);
         });
 
 
@@ -198,6 +199,20 @@ public class studentInterfaceController {
 
     public void handleAddSelected(){
 
+        try {
+            Course addedCourse = (Course) addCourseTable.getSelectionModel().getSelectedItem();
+            PreparedStatement statement = connection.prepareStatement("insert into takes values ('" + studentID + "', '" + addedCourse.getCourse_id() + "', '" + addedCourse.getSec_id() + "', '" + addedCourse.getSemester() + "', '" + addedCourse.getYear() + "', 'C')");
+
+            statement.executeUpdate();
+
+            System.out.println("insert made");
+
+            queryStudentInfo(connection);
+            handleTranscript();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -34,11 +34,14 @@ public class Course {
         this.title = title;
     }
 
-    public Course(String course_id, String title, String building, String room_number) {
+    public Course(String course_id, String title, String building, String room_number, String sec_id, String year, String semester) {
         this.course_id = course_id;
         this.title = title;
         this.building = building;
         this.room_number = room_number;
+        this.sec_id = sec_id;
+        this.year = year;
+        this.semester = semester;
     }
     public String getCourse_id() {
         return course_id;
