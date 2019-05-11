@@ -68,6 +68,8 @@ public class studentInterfaceController {
     @FXML TableColumn<Course, String> removeCourseYear = new TableColumn<>("Course ID");
     @FXML Button removeSelectedButton;
 
+    @FXML Button exitProgramButton;
+
 
     public void initData(String studentID, Connection connection){
         this.studentID = studentID;

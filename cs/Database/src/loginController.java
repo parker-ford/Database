@@ -116,7 +116,7 @@ public class loginController {
     }
 
     public void updateLabel(){
-
+        errorLabel.setText("Invalid Student ID");
     }
 
 
