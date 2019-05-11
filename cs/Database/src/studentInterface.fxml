@@ -22,7 +22,7 @@
             <Button fx:id="degreeButton" mnemonicParsing="false" onAction="#handleDegree" text="Check Degree Requirements" />
             <Button fx:id="addCourseButton" mnemonicParsing="false" onAction="#handleAdd" text="Add Course" />
             <Button fx:id="removeCourseButton" mnemonicParsing="false" onAction="#handleRemove" text="Remove Course" />
-            <Button fx:id="exitButton" mnemonicParsing="false" text="Exit" />
+            <Button fx:id="exitProgramButton" mnemonicParsing="false" text="Exit" />
          </children>
       </HBox>
       <TableView fx:id="currentCourseTable" layoutX="97.0" layoutY="150.0" prefHeight="200.0" prefWidth="566.0" visible="false">
