@@ -48,29 +48,21 @@
                      <children>
                         <RadioButton fx:id="radio2009" mnemonicParsing="false" selected="true" text="2009">
                            <toggleGroup>
-                              <ToggleGroup fx:id="Year" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="radio2010" mnemonicParsing="false" text="2010">
-                           <toggleGroup>
                               <ToggleGroup fx:id="addYear" />
                            </toggleGroup>
                         </RadioButton>
+                        <RadioButton fx:id="radio2010" mnemonicParsing="false" text="2010" toggleGroup="$addYear" />
                      </children>
                   </HBox>
                   <HBox prefHeight="59.0" prefWidth="294.0">
                      <children>
                         <RadioButton fx:id="radioFall" mnemonicParsing="false" selected="true" text="Fall">
                            <toggleGroup>
-                              <ToggleGroup fx:id="Semester" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="radioSpring" mnemonicParsing="false" text="Spring" toggleGroup="$Semester" />
-                        <RadioButton fx:id="radioSummer" mnemonicParsing="false" text="Summer">
-                           <toggleGroup>
                               <ToggleGroup fx:id="addSemester" />
                            </toggleGroup>
                         </RadioButton>
+                        <RadioButton fx:id="radioSpring" mnemonicParsing="false" text="Spring" toggleGroup="$addSemester" />
+                        <RadioButton fx:id="radioSummer" mnemonicParsing="false" text="Summer" toggleGroup="$addSemester" />
                      </children>
                   </HBox>
                   <Button fx:id="addSearchCourseButton" mnemonicParsing="false" text="Search Courses" />
