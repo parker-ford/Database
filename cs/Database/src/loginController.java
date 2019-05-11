@@ -20,7 +20,7 @@ public class loginController {
     @FXML
     public TextField studentIDText;
     @FXML
-    public Label nameDisplay;
+    public Label errorLabel;
 
     private String userID;
     private String password;
@@ -65,46 +65,59 @@ public class loginController {
 
     public void handleSubmit(ActionEvent event) throws IOException, ParserConfigurationException {
         this.studentID = studentIDText.getText();
-        System.out.println(studentID);
-        //String studentName = queryName(connection);
+        boolean check = checkUser();
 
-        FXMLLoader loader= new FXMLLoader();
-        loader.setLocation(getClass().getResource("studentInterface.fxml"));
+        if(check == false){
+            updateLabel();
+            studentIDText.clear();
+        }
 
-        Parent studentInterfaceParent = loader.load();
-        Scene studentInterfaceScene = new Scene(studentInterfaceParent);
+        else {
+            System.out.println(studentID);
+            //String studentName = queryName(connection);
 
-        studentInterfaceController controller = loader.getController();
-        controller.initData(studentID, connection);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("studentInterface.fxml"));
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(studentInterfaceScene);
-        window.show();
+            Parent studentInterfaceParent = loader.load();
+            Scene studentInterfaceScene = new Scene(studentInterfaceParent);
+
+            studentInterfaceController controller = loader.getController();
+            controller.initData(studentID, connection);
+
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(studentInterfaceScene);
+            window.show();
+        }
 
     }
 
-    public void updateLabel(String name){
-        nameDisplay.setText(name);
-    }
-
-    public String queryName(Connection connection){
+    public boolean checkUser(){
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT name FROM student WHERE ID = " + studentID);
-
+            PreparedStatement statement = connection.prepareStatement("select id from student where id = '" + studentID + "'");
             ResultSet result = statement.executeQuery();
 
-            while(result.next()){
-                System.out.println(result.getString("name"));
-                String studentName = result.getString("name");
-                updateLabel(studentName);
-                return studentName;
+            System.out.println(result.getFetchSize() + " fetch size");
+            System.out.println("test");
+
+            if(result.next() == false){
+                System.out.println("FALSE");
+                return false;
             }
-
-
+            else{
+                System.out.println("TRUE");
+                return true;
+            }
         }
-        catch (Exception e){
+        catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
+
+    public void updateLabel(){
+
+    }
+
+
 }
