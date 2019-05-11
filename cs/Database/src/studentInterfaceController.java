@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
@@ -29,7 +30,7 @@ public class studentInterfaceController {
     @FXML Button degreeButton;
     @FXML Button addCourseButton;
     @FXML Button removeCourseButton;
-    @FXML Button exitButton;
+    @FXML Button exitProgramButton;
     @FXML Label nameLabel;
     @FXML Label idLabel;
     @FXML Label deptLabel;
@@ -68,7 +69,6 @@ public class studentInterfaceController {
     @FXML TableColumn<Course, String> removeCourseYear = new TableColumn<>("Course ID");
     @FXML Button removeSelectedButton;
 
-    @FXML Button exitProgramButton;
 
 
     public void initData(String studentID, Connection connection){
@@ -252,6 +252,11 @@ public class studentInterfaceController {
                 z.printStackTrace();
             }
         });
+    }
+
+    public void handleExitProgram(){
+        Stage stage = (Stage) exitProgramButton.getScene().getWindow();
+        stage.close();
     }
 
 
