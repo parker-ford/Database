@@ -47,12 +47,18 @@ public class studentInterfaceController {
     @FXML TableColumn<Course, String> missingTitle = new TableColumn<>("Title");
 
     @FXML HBox addHBox;
-    @FXML RadioButton radioSecOne;
-    @FXML RadioButton radioSecTwo;
+    @FXML RadioButton radio2010;
+    @FXML RadioButton radio2009;
+    @FXML RadioButton radioFall;
+    @FXML RadioButton radioSpring;
+    @FXML RadioButton radioSummer;
     @FXML TableView addCourseTable;
     @FXML TableColumn<Course, String> addCourseID = new TableColumn<>("Course ID");
     @FXML TableColumn<Course, String> addCourseTitle = new TableColumn<>("Title");
     @FXML Button addSelectedClassButton;
+    @FXML Button addSearchCourseButton;
+    @FXML ToggleGroup addYear;
+    @FXML ToggleGroup addSemester;
 
 
     public void initData(String studentID, Connection connection){
@@ -172,12 +178,22 @@ public class studentInterfaceController {
     public void handleAdd(){
         resetView();
         addHBox.setVisible(true);
-        radioSecOne.setOnAction(e -> {
-            queryAddCourse(connection, "1");
+
+
+        addSearchCourseButton.setOnAction(e -> {
+            String year;
+            String semester;
+            RadioButton getYear = (RadioButton) addYear.getSelectedToggle();
+            year = getYear.toString();
+            RadioButton getSemester = (RadioButton) addSemester.getSelectedToggle();
+            semester = getSemester.getText();
+
+            System.out.println(year + " " + semester);
         });
-        radioSecTwo.setOnAction(e -> {
-            queryAddCourse(connection, "2");
-        });
+
+
+
+
     }
 
     public void handleAddSelected(){

@@ -46,15 +46,35 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="166.0">
                      <children>
-                        <RadioButton fx:id="radioSecTwo" mnemonicParsing="false" text="2">
+                        <RadioButton fx:id="radio2009" mnemonicParsing="false" selected="true" text="2009">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Year" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radio2010" mnemonicParsing="false" text="2010">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="addYear" />
+                           </toggleGroup>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="59.0" prefWidth="294.0">
+                     <children>
+                        <RadioButton fx:id="radioFall" mnemonicParsing="false" selected="true" text="Fall">
                            <toggleGroup>
                               <ToggleGroup fx:id="Semester" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="radioSecOne" mnemonicParsing="false" text="1" toggleGroup="$Semester" />
+                        <RadioButton fx:id="radioSpring" mnemonicParsing="false" text="Spring" toggleGroup="$Semester" />
+                        <RadioButton fx:id="radioSummer" mnemonicParsing="false" text="Summer">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="addSemester" />
+                           </toggleGroup>
+                        </RadioButton>
                      </children>
                   </HBox>
-                  <Button fx:id="addSelectedClassButton" mnemonicParsing="false" onAction="#handleAddSelected" prefHeight="22.0" prefWidth="180.0" text="Add Selected Class" />
+                  <Button fx:id="addSearchCourseButton" mnemonicParsing="false" text="Search Courses" />
+                  <Button fx:id="addSelectedClassButton" mnemonicParsing="false" onAction="#handleAddSelected" prefHeight="22.0" prefWidth="180.0" text="Add Selected Course" />
                </children>
             </VBox>
             <TableView fx:id="addCourseTable" prefHeight="244.0" prefWidth="355.0">
