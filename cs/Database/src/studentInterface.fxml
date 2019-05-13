@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -19,80 +20,90 @@
             <Label fx:id="deptLabel" text="Department:" textFill="#e8e8e8" />
             <Label fx:id="credLabel" text="Total Credits: " textFill="#e8e8e8" />
          </children>
+         <padding>
+            <Insets left="20.0" top="10.0" />
+         </padding>
       </VBox>
-      <HBox layoutX="14.0" layoutY="457.0" prefHeight="100.0" prefWidth="675.0">
-         <children>
-            <Button fx:id="transcriptButton" mnemonicParsing="false" onAction="#handleTranscript" text="Get Transcipt" />
-            <Button fx:id="degreeButton" mnemonicParsing="false" onAction="#handleDegree" text="Check Degree Requirements" />
-            <Button fx:id="addCourseButton" mnemonicParsing="false" onAction="#handleAdd" text="Add Course" />
-            <Button fx:id="removeCourseButton" mnemonicParsing="false" onAction="#handleRemove" text="Remove Course" />
-            <Button fx:id="exitProgramButton" mnemonicParsing="false" onAction="#handleExitProgram" text="Exit" />
-         </children>
-      </HBox>
-      <TableView fx:id="currentCourseTable" layoutX="97.0" layoutY="150.0" prefHeight="200.0" prefWidth="566.0" visible="false">
+      <TableView fx:id="currentCourseTable" layoutX="204.0" layoutY="33.0" prefHeight="451.0" prefWidth="653.0" visible="false">
         <columns>
-            <TableColumn fx:id="courseIDColumn" prefWidth="109.0" text="Course ID" />
-            <TableColumn fx:id="titleColumn" prefWidth="204.0" text="Title" />
-            <TableColumn fx:id="semesterColumn" minWidth="0.0" prefWidth="79.0" text="Semester" />
-            <TableColumn fx:id="yearColumn" minWidth="0.0" prefWidth="100.0" text="Year" />
-            <TableColumn fx:id="gradeColumn" prefWidth="73.0" text="Grade" />
+            <TableColumn fx:id="courseIDColumn" prefWidth="158.0" text="Course ID" />
+            <TableColumn fx:id="titleColumn" prefWidth="230.0" text="Title" />
+            <TableColumn fx:id="semesterColumn" minWidth="0.0" prefWidth="100.0" text="Semester" />
+            <TableColumn fx:id="yearColumn" minWidth="0.0" prefWidth="77.0" text="Year" />
+            <TableColumn fx:id="gradeColumn" prefWidth="87.0" text="Grade" />
         </columns>
       </TableView>
-      <TableView fx:id="missingCourseTable" layoutX="223.0" layoutY="179.0" prefHeight="200.0" prefWidth="384.0" visible="false">
+      <TableView fx:id="missingCourseTable" layoutX="196.0" layoutY="33.0" prefHeight="451.0" prefWidth="653.0" visible="false">
         <columns>
-          <TableColumn fx:id="missingID" prefWidth="94.0" text="Course ID" />
-          <TableColumn fx:id="missingTitle" prefWidth="269.0" text="Title" />
+          <TableColumn fx:id="missingID" prefWidth="249.0" text="Course ID" />
+          <TableColumn fx:id="missingTitle" prefWidth="403.0" text="Title" />
         </columns>
       </TableView>
-      <HBox fx:id="addHBox" layoutX="50.0" layoutY="142.0" prefHeight="244.0" prefWidth="660.0" visible="false">
+      <HBox fx:id="addHBox" layoutX="231.0" layoutY="41.0" prefHeight="451.0" prefWidth="608.0" style="-fx-background-color: #353535;" visible="false">
          <children>
-            <VBox prefHeight="244.0" prefWidth="294.0">
+            <VBox alignment="CENTER" prefHeight="431.0" prefWidth="250.0" spacing="10.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="166.0">
+                  <HBox alignment="CENTER" prefHeight="41.0" prefWidth="250.0" spacing="8.0">
                      <children>
-                        <RadioButton fx:id="radio2009" mnemonicParsing="false" selected="true" text="2009">
+                        <RadioButton fx:id="radio2009" mnemonicParsing="false" selected="true" text="2009" textFill="#e8e8e8">
                            <toggleGroup>
                               <ToggleGroup fx:id="addYear" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="radio2010" mnemonicParsing="false" text="2010" toggleGroup="$addYear" />
+                        <RadioButton fx:id="radio2010" mnemonicParsing="false" text="2010" textFill="#e8e8e8" toggleGroup="$addYear" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="59.0" prefWidth="294.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="250.0" spacing="8.0">
                      <children>
-                        <RadioButton fx:id="radioFall" mnemonicParsing="false" selected="true" text="Fall">
+                        <RadioButton fx:id="radioFall" mnemonicParsing="false" selected="true" text="Fall" textFill="#e8e8e8">
                            <toggleGroup>
                               <ToggleGroup fx:id="addSemester" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="radioSpring" mnemonicParsing="false" text="Spring" toggleGroup="$addSemester" />
-                        <RadioButton fx:id="radioSummer" mnemonicParsing="false" text="Summer" toggleGroup="$addSemester" />
+                        <RadioButton fx:id="radioSpring" mnemonicParsing="false" text="Spring" textFill="#e8e8e8" toggleGroup="$addSemester" />
+                        <RadioButton fx:id="radioSummer" mnemonicParsing="false" text="Summer" textFill="#e8e8e8" toggleGroup="$addSemester" />
                      </children>
                   </HBox>
-                  <Button fx:id="addSearchCourseButton" mnemonicParsing="false" text="Search Courses" />
-                  <Button fx:id="addSelectedClassButton" mnemonicParsing="false" onAction="#handleAddSelected" prefHeight="22.0" prefWidth="180.0" text="Add Selected Course" />
+                  <Button fx:id="addSearchCourseButton" mnemonicParsing="false" style="-fx-background-color: #222222;" text="Search Courses" textFill="#e8e8e8" />
+                  <Button fx:id="addSelectedClassButton" mnemonicParsing="false" onAction="#handleAddSelected" prefHeight="22.0" prefWidth="180.0" style="-fx-background-color: #222222;" text="Add Selected Course" textFill="#e8e8e8">
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <TableView fx:id="addCourseTable" prefHeight="244.0" prefWidth="355.0">
               <columns>
                 <TableColumn fx:id="addCourseID" prefWidth="109.0" text="Course ID" />
-                <TableColumn fx:id="addCourseTitle" prefWidth="224.0" text="Title" />
+                <TableColumn fx:id="addCourseTitle" prefWidth="245.0" text="Title" />
               </columns>
             </TableView>
          </children>
       </HBox>
-      <HBox fx:id="removeHBox" layoutX="72.0" layoutY="125.0" prefHeight="259.0" prefWidth="684.0" visible="false">
+      <HBox fx:id="removeHBox" layoutX="216.0" layoutY="59.0" prefHeight="337.0" prefWidth="641.0" style="-fx-background-color: #353535;">
          <children>
-            <Button fx:id="removeSelectedButton" mnemonicParsing="false" text="Remove Selected Course" />
-            <TableView fx:id="removeCourseTable" prefHeight="259.0" prefWidth="440.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="removeSelectedButton" mnemonicParsing="false" style="-fx-background-color: #222222;" text="Remove" textFill="#e8e8e8" />
+               </children>
+            </VBox>
+            <TableView fx:id="removeCourseTable" prefHeight="337.0" prefWidth="562.0" style="-fx-background-color: #000000;">
               <columns>
-                <TableColumn fx:id="removeCourseID" prefWidth="98.0" text="Course ID" />
-                <TableColumn fx:id="removeCourseTitle" minWidth="0.0" prefWidth="121.0" text="Title" />
-                  <TableColumn fx:id="removeCourseSemester" prefWidth="75.0" text="Semester" />
-                  <TableColumn fx:id="removeCourseYear" prefWidth="105.0" text="Year" />
+                <TableColumn fx:id="removeCourseID" prefWidth="145.0" text="Course ID" />
+                <TableColumn fx:id="removeCourseTitle" minWidth="0.0" prefWidth="182.0" text="Title" />
+                  <TableColumn fx:id="removeCourseSemester" prefWidth="114.0" text="Semester" />
+                  <TableColumn fx:id="removeCourseYear" prefWidth="110.0" text="Year" />
               </columns>
             </TableView>
          </children>
       </HBox>
+      <VBox alignment="TOP_CENTER" layoutX="35.0" layoutY="156.0" prefHeight="269.0" prefWidth="147.0" spacing="5.0">
+         <children>
+            <Button fx:id="transcriptButton" mnemonicParsing="false" onAction="#handleTranscript" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #444444;" text="Get Transcipt" textFill="#e8e8e8" />
+            <Button fx:id="degreeButton" mnemonicParsing="false" onAction="#handleDegree" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #444444;" text="Degree Requirements" textFill="#e8e8e8" />
+            <Button fx:id="addCourseButton" mnemonicParsing="false" onAction="#handleAdd" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #444444;" text="Add Course" textFill="#e8e8e8" />
+            <Button fx:id="removeCourseButton" mnemonicParsing="false" onAction="#handleRemove" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: #444444;" text="Remove Course" textFill="#e8e8e8" />
+         </children>
+      </VBox>
+      <Button fx:id="exitProgramButton" layoutX="771.0" layoutY="518.0" mnemonicParsing="false" onAction="#handleExitProgram" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #444444;" text="Exit" textFill="#e8e8e8" />
    </children>
 </AnchorPane>
