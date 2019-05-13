@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="557.0" prefWidth="882.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="studentInterfaceController">
+<AnchorPane prefHeight="557.0" prefWidth="882.0" style="-fx-background-color: #262626;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="studentInterfaceController">
    <children>
       <VBox prefHeight="200.0" prefWidth="297.0">
          <children>
-            <Label fx:id="nameLabel" text="Welcome" />
-            <Label fx:id="idLabel" text="ID:" />
-            <Label fx:id="deptLabel" text="Department:" />
-            <Label fx:id="credLabel" text="Total Credits: " />
+            <Label fx:id="nameLabel" text="Welcome" textFill="#e8e8e8">
+               <font>
+                  <Font size="29.0" />
+               </font></Label>
+            <Label fx:id="idLabel" text="ID:" textFill="#e8e8e8" />
+            <Label fx:id="deptLabel" text="Department:" textFill="#e8e8e8" />
+            <Label fx:id="credLabel" text="Total Credits: " textFill="#e8e8e8" />
          </children>
       </VBox>
       <HBox layoutX="14.0" layoutY="457.0" prefHeight="100.0" prefWidth="675.0">

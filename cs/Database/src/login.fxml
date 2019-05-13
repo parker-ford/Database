@@ -7,13 +7,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loginController">
    <children>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #f5f5f5;">
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #262626;">
          <children>
-            <Label text="Enter Your Student ID" textFill="#0044ff">
+            <Label text="Enter Your Student ID" textFill="#e8e8e8">
                <font>
-                  <Font name="Arial" size="17.0" />
+                  <Font name="Book Antiqua" size="14.0" />
                </font>
             </Label>
             <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0">
