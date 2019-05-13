@@ -46,7 +46,7 @@
     -fx-background-radius: 1;
 }
 
-.table-view > .virtual-flow > .scroll-bar:vertical,
+/*.table-view > .virtual-flow > .scroll-bar:vertical,
 .table-view > .virtual-flow > .scroll-bar:vertical > .track,
 .table-view > .virtual-flow > .scroll-bar:vertical > .track-background, 
 .table-view > .virtual-flow > .scroll-bar:horizontal,

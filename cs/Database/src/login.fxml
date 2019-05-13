@@ -19,7 +19,7 @@
             <HBox alignment="CENTER" prefHeight="54.0" prefWidth="600.0">
                <children>
                   <TextField fx:id="studentIDText" prefHeight="25.0" prefWidth="105.0" />
-                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmit" text="Submit" />
+                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmit" style="-fx-background-color: #444444;" text="Submit" textFill="#e8e8e8" />
                </children>
             </HBox>
             <Label fx:id="errorLabel" textFill="RED" />
